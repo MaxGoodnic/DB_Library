@@ -36,16 +36,6 @@
 pip install -r requirements.txt
 ```
 
-### Настройка PostgreSQL (опционально)
-1. Установите PostgreSQL
-2. Создайте базу данных:
-```sql
-CREATE DATABASE university_db;
-```
-3. Скопируйте `.env.example` в `.env` и настройте параметры подключения:
-```bash
-cp .env.example .env
-```
 
 ## Использование
 
@@ -62,48 +52,6 @@ python main.py postgresql
 ### Запуск тестов
 ```bash
 pytest tests/
-```
-
-## Примеры использования
-
-### Базовые операции
-```python
-from database import DatabaseManager
-from queries.basic_queries import BasicQueries
-
-# Инициализация
-db = DatabaseManager('sqlite')
-db.connect()
-
-# Создание запросов
-queries = BasicQueries(db)
-
-# Получение всех студентов
-students = queries.get_all_students()
-
-# Добавление студента
-queries.add_student(
-    first_name="Иван",
-    last_name="Петров", 
-    email="ivan@university.edu",
-    birth_date="2000-01-01"
-)
-```
-
-### Продвинутые запросы с оконными функциями
-```python
-from queries.advanced_queries import AdvancedQueries
-
-advanced = AdvancedQueries(db)
-
-# Топ студентов по среднему баллу
-top_students = advanced.get_top_students_by_avg_grade(10)
-
-# Анализ посещаемости
-attendance = advanced.get_attendance_analysis()
-
-# Сравнение групп
-group_comparison = advanced.get_group_performance_comparison()
 ```
 
 ## Возможности системы
@@ -188,10 +136,3 @@ FROM Grades;
 pytest -v
 ```
 
-## Автор
-
-Проект создан в качестве демонстрации работы с базами данных и SQL.
-
-## Лицензия
-
-MIT License
